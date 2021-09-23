@@ -7,9 +7,9 @@ var outputBox = document.querySelector("#output-box");
 submitBtn.addEventListener("click", submitHandler);
 
 function submitHandler() {
-    var ip = Number(initialPrice.value);
-    var qty = Number(stocksQuantity.value);
-    var curr = Number(currentPrice.value);
+    var ip = initialPrice.value;
+    var qty = stocksQuantity.value;
+    var curr = currentPrice.value;
 
     calculateProfitAndLoss(ip, qty, curr);
 }
@@ -21,7 +21,7 @@ function calculateProfitAndLoss(initial, quantity, current) {
 
         showOutput(`Hey the loss is ${loss} and the percent is ${lossPercentage}%`)
     } else if (current > initial) {
-        var profit = (current + initial) * quantity;
+        var profit = (current - initial) * quantity;
         var profitPercentage = (profit / initial) * 100;
 
         showOutput(`"Hey the profit is ${profit} and the percent is ${profitPercentage}%"`)
@@ -31,6 +31,8 @@ function calculateProfitAndLoss(initial, quantity, current) {
     }
 
 }
+
+
 
 function showOutput(message) {
     outputBox.innerHTML = message;
