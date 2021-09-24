@@ -6,7 +6,7 @@
 
 body {
     text-align: center;
-    height: 100vh;
+    height: 120vh;
     background: linear-gradient(to bottom right, 
     #34D399, yellow);
 }
@@ -38,4 +38,17 @@ button {
     border: 1px solid black;
     border-radius: 10px;
     color: #5B21B6;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: aquamarine;
+    transition: 0.5s;
+    /* box-shadow: 3px 3px red, -1em 0 0.4em olive; */
+    box-shadow: 2px -2px teal;
+}
+
+#output-box {
+    padding: 30px;
+    font-size: 30px;
 }

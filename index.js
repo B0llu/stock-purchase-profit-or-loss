@@ -6,6 +6,30 @@ var outputBox = document.querySelector("#output-box");
 
 submitBtn.addEventListener("click", submitHandler);
 
+initialPrice.onkeydown = function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+}
+
+stocksQuantity.onkeydown = function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+}
+
+currentPrice.onkeydown = function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+}
+
 function submitHandler() {
     var ip = Number(initialPrice.value);
     var qty = Number(stocksQuantity.value);
@@ -16,24 +40,25 @@ function submitHandler() {
 
 function calculateProfitAndLoss(initial, quantity, current) {
     if (initial > current) {
-        var loss = (initial - current) * quantity;
+        var loss = (initial - current);
         var lossPercentage = (loss / initial) * 100;
 
-        showOutput(`Hey the loss is ${loss} and the percent is ${lossPercentage}%`)
+        outputBox.textContent = (`Hey the loss is ${loss} and the percent is ${lossPercentage}%`)
+        outputBox.style.color = "red"
+
     } else if (current > initial) {
-        var profit = (current - initial) * quantity;
+        var profit = (current - initial) ;
         var profitPercentage = (profit / initial) * 100;
 
-        showOutput(`"Hey the profit is ${profit} and the percent is ${profitPercentage}%"`)
+        outputBox.textContent = (`Hey the profit is ${profit} and the percent is ${profitPercentage}%`)
+        outputBox.style.color = "green"
     } else {
 
-        showOutput(`No Pain No Gain and No Gain No Pain`);
+        outputBox.textContent = (`No Pain No Gain and No Gain No Pain`);
+        outputBox.style.color = "white"
     }
 
 }
 
 
 
-function showOutput(message) {
-    outputBox.innerHTML = message;
-}
